@@ -1,0 +1,17 @@
+<div *ngIf="album">
+  <h2>Альбом: 
+    <span *ngIf="!isEditing">{{ album.title }}</span>
+    <input *ngIf="isEditing" [(ngModel)]="newTitle">
+  </h2>
+  <p><strong>ID:</strong> {{ album.id }}</p>
+  <p><strong>User ID:</strong> {{ album.userId }}</p>
+
+  <button (click)="return()">Back</button>
+  <button (click)="goToPhotos()">Photos</button>
+  <button (click)="addToFavorites()">
+    {{ isFavorite ? 'In favorites' : 'Add to favoirte' }}
+  </button>
+  <button *ngIf="!isEditing" (click)="isEditing = true">Update</button>
+  <button *ngIf="isEditing" (click)="saveTitle()">save</button>
+  <button *ngIf="isEditing" (click)="isEditing = false">cancel</button>
+</div>
